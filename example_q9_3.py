@@ -10,19 +10,18 @@ def main():
     print("\nExample 1: 9x9 board with custom color regions")
     # Create a custom color pattern (9 colors with 9 cells each)
     custom_colors = np.array([
-        [0, 0, 1, 1, 1, 1, 1, 1, 1],
-        [0, 2, 2, 3, 3, 3, 4, 4, 1],
-        [2, 2, 3, 3, 5, 3, 3, 4, 4],
-        [2, 3, 3, 3, 5, 3, 3, 3, 4],
-        [2, 3, 6, 6, 6, 3, 3, 3, 4],
-        [2, 3, 3, 3, 3, 3, 3, 3, 4],
-        [2, 7, 3, 3, 3, 3, 3, 8, 4],
-        [2, 7, 7, 3, 3, 3, 8, 8, 4],
-        [2, 2, 7, 7, 7, 7, 4, 4, 4],
+        [0, 0, 0, 0, 0, 0, 0, 1],
+        [0, 2, 2, 3, 3, 3, 0, 1],
+        [0, 2, 4, 4, 4, 3, 0, 1],
+        [0, 2, 5, 6, 4, 3, 0, 1],
+        [7, 2, 5, 6, 6, 3, 0, 1],
+        [7, 2, 5, 5, 5, 5, 0, 1],
+        [7, 2, 2, 2, 0, 0, 0, 1],
+        [7, 7, 1, 1, 1, 1, 1, 1],
     ])
     
     # Create and solve the Queens Game CSP
-    solver = QueensGameCSP(9, custom_colors)
+    solver = QueensGameCSP(8, custom_colors)
     
     print("Solving using the CSP framework...")
     if solver.solve():
@@ -33,9 +32,9 @@ def main():
         
         # Print the solution in a readable format
         print("\nSolution visualization:")
-        for i in range(9):
+        for i in range(8):
             row = ""
-            for j in range(9):
+            for j in range(8):
                 if board[i, j] == 1:
                     row += "Q "
                 else:

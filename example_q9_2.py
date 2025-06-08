@@ -1,8 +1,8 @@
 """
-Example usage of the Queens Game Solver
+Example usage of the Queens Game Solver using the CSP framework
 """
 
-from queens_solver import QueensGameSolver
+from queens_csp import QueensGameCSP
 import numpy as np
 
 def main():
@@ -20,9 +20,32 @@ def main():
         [5, 7, 7, 7, 7, 7, 7, 8, 2],
         [7, 7, 7, 7, 7, 7, 8, 8, 8],
     ])
-    solver = QueensGameSolver(9, custom_colors)
+    
+    # Create and solve the Queens Game CSP
+    solver = QueensGameCSP(9, custom_colors)
+    
+    print("Solving using the CSP framework...")
     if solver.solve():
+        print("Solution found!")
+        
+        # Get the board representation
+        board = solver.get_board()
+        
+        # Print the solution in a readable format
+        print("\nSolution visualization:")
+        for i in range(9):
+            row = ""
+            for j in range(9):
+                if board[i, j] == 1:
+                    row += "Q "
+                else:
+                    row += ". "
+            print(row)
+        
+        # Visualize the solution
         solver.visualize()
+    else:
+        print("No solution exists for this board configuration.")
 
 if __name__ == "__main__":
     main()
